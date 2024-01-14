@@ -1,0 +1,215 @@
+{
+  "name": "SampleApp_Maturity1-Blueprint",
+  "projectName": "SampleApp_Maturity1",
+  "mode": "NORMAL",
+  "plan": [
+    [
+      {
+        "plugin": "org",
+        "subtasks": [
+          "setProjectMapping"
+        ],
+        "options": {
+          "projectMappings": [
+            {
+              "projectName": "SampleApp_Maturity1",
+              "scopes": [
+                {
+                  "rowId": "gitlab:GitlabProject:1:51759716",
+                  "table": "repos"
+                },
+                {
+                  "rowId": "gitlab:GitlabProject:1:51759716",
+                  "table": "cicd_scopes"
+                },
+                {
+                  "rowId": "gitlab:GitlabProject:1:51759716",
+                  "table": "boards"
+                },
+                {
+                  "rowId": "gitlab:GitlabProject:1:51760520",
+                  "table": "repos"
+                },
+                {
+                  "rowId": "gitlab:GitlabProject:1:51760520",
+                  "table": "cicd_scopes"
+                },
+                {
+                  "rowId": "gitlab:GitlabProject:1:51760520",
+                  "table": "boards"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "plugin": "gitlab",
+        "subtasks": [
+          "collectApiIssues",
+          "extractApiIssues",
+          "collectApiMergeRequests",
+          "extractApiMergeRequests",
+          "collectApiMergeRequestDetails",
+          "collectApiMergeRequestsNotes",
+          "extractApiMergeRequestsNotes",
+          "collectApiMergeRequestsCommits",
+          "extractApiMergeRequestsCommits",
+          "collectApiPipelines",
+          "extractApiPipelines",
+          "collectApiPipelineDetails",
+          "extractApiPipelineDetails",
+          "collectApiJobs",
+          "extractApiJobs",
+          "enrichMrs",
+          "collectAccounts",
+          "extractAccounts",
+          "convertAccounts",
+          "convertApiProject",
+          "convertApiMergeRequests",
+          "convertMergeRequestComment",
+          "convertApiMergeRequestsCommits",
+          "convertIssues",
+          "convertIssueLabels",
+          "convertMrLabels",
+          "convertPipelines",
+          "convertPipelineCommits",
+          "convertJobs",
+          "extractApiMergeRequestDetails"
+        ],
+        "options": {
+          "connectionId": 1,
+          "projectId": 51759716,
+          "scopeConfigId": 1,
+          "timeAfter": "2023-06-05T00:00:00-04:00"
+        }
+      },
+      {
+        "plugin": "gitextractor",
+        "subtasks": null,
+        "options": {
+          "name": "intellidine-nextjs-sample-app",
+          "proxy": "",
+          "repoId": "gitlab:GitlabProject:1:51759716",
+          "url": "https://git:glpat-ztrE66NSKR3-GatVGzCQ@gitlab.com/idc4855243/devlakedemos/intellidine-nextjs-sample-app.git"
+        }
+      }
+    ],
+    [
+      {
+        "plugin": "gitlab",
+        "subtasks": [
+          "collectApiIssues",
+          "extractApiIssues",
+          "collectApiMergeRequests",
+          "extractApiMergeRequests",
+          "collectApiMergeRequestDetails",
+          "collectApiMergeRequestsNotes",
+          "extractApiMergeRequestsNotes",
+          "collectApiMergeRequestsCommits",
+          "extractApiMergeRequestsCommits",
+          "collectApiPipelines",
+          "extractApiPipelines",
+          "collectApiPipelineDetails",
+          "extractApiPipelineDetails",
+          "collectApiJobs",
+          "extractApiJobs",
+          "enrichMrs",
+          "collectAccounts",
+          "extractAccounts",
+          "convertAccounts",
+          "convertApiProject",
+          "convertApiMergeRequests",
+          "convertMergeRequestComment",
+          "convertApiMergeRequestsCommits",
+          "convertIssues",
+          "convertIssueLabels",
+          "convertMrLabels",
+          "convertPipelines",
+          "convertPipelineCommits",
+          "convertJobs",
+          "extractApiMergeRequestDetails"
+        ],
+        "options": {
+          "connectionId": 1,
+          "projectId": 51760520,
+          "scopeConfigId": 1,
+          "timeAfter": "2023-06-05T00:00:00-04:00"
+        }
+      },
+      {
+        "plugin": "gitextractor",
+        "subtasks": null,
+        "options": {
+          "name": "intellidine-nextjs-sample-app-iac",
+          "proxy": "",
+          "repoId": "gitlab:GitlabProject:1:51760520",
+          "url": "https://git:glpat-ztrE66NSKR3-GatVGzCQ@gitlab.com/idc4855243/devlakedemos/intellidine-nextjs-sample-app-iac.git"
+        }
+      }
+    ],
+    [
+      {
+        "plugin": "dora",
+        "subtasks": [
+          "generateDeploymentCommits",
+          "enrichPrevSuccessDeploymentCommits"
+        ],
+        "options": {
+          "projectName": "SampleApp_Maturity1"
+        }
+      }
+    ],
+    [
+      {
+        "plugin": "refdiff",
+        "subtasks": [
+          "calculateDeploymentCommitsDiff"
+        ],
+        "options": {
+          "projectName": "SampleApp_Maturity1"
+        }
+      }
+    ],
+    [
+      {
+        "plugin": "dora",
+        "subtasks": [
+          "calculateChangeLeadTime",
+          "ConnectIncidentToDeployment"
+        ],
+        "options": {
+          "projectName": "SampleApp_Maturity1"
+        }
+      }
+    ]
+  ],
+  "enable": false,
+  "cronConfig": "0 0 * * *",
+  "isManual": false,
+  "skipOnFail": true,
+  "labels": [],
+  "settings": {
+    "connections": [
+      {
+        "connectionId": 1,
+        "plugin": "gitlab",
+        "scopes": [
+          {
+            "id": "51759716"
+          },
+          {
+            "id": "51760520"
+          }
+        ]
+      }
+    ],
+    "timeAfter": "2023-06-05T00:00:00-04:00",
+    "version": "2.0.0"
+  },
+  "id": 3,
+  "createdAt": "2023-12-05T17:28:54.905Z",
+  "updatedAt": "2023-12-06T20:33:06.662Z"
+}
